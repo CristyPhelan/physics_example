@@ -1,20 +1,47 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://PlayerDemo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://platform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://sky1.png" type="Texture" id=3]
+[ext_resource path="res://platform2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://platform3.tscn" type="PackedScene" id=5]
 
 [node name="Level1" type="Node2D"]
+position = Vector2( 10, -4 )
 
-[node name="Sky1" type="Sprite" parent="."]
-position = Vector2( 736.75, 638.5 )
-scale = Vector2( 0.81276, 1.02417 )
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 487, 251 )
+scale = Vector2( 1.0664, 1.50125 )
 texture = ExtResource( 3 )
 
-[node name="platform" parent="." instance=ExtResource( 2 )]
-position = Vector2( 274, 414 )
+[node name="Sky1" type="Sprite" parent="background"]
+position = Vector2( 1918.6, -15.3206 )
+texture = ExtResource( 3 )
+
+[node name="Sky1" type="Sprite" parent="background/Sky1"]
+position = Vector2( -1943.91, 1199.67 )
+texture = ExtResource( 3 )
+
+[node name="Sky2" type="Sprite" parent="background/Sky1"]
+position = Vector2( -15.9414, 1205.66 )
+texture = ExtResource( 3 )
+
+[node name="Sky1" type="Sprite" parent="background/Sky1/Sky2"]
+position = Vector2( 1936.41, -1190.34 )
+texture = ExtResource( 3 )
+
+[node name="Sky1" type="Sprite" parent="background/Sky1/Sky2/Sky1"]
+position = Vector2( -7.50195, 1208.33 )
+texture = ExtResource( 3 )
 
 [node name="PlayerDemo" parent="." instance=ExtResource( 1 )]
+position = Vector2( 192, 155 )
 
-[node name="platform2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 805, 493 )
+[node name="platform" parent="." instance=ExtResource( 2 )]
+position = Vector2( 246, 402 )
+
+[node name="platform2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1056, 388 )
+
+[node name="platform3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 690, 501 )
