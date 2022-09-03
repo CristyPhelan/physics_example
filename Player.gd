@@ -1,29 +1,34 @@
-extends KinematicBody2D
+extends Area2D
 
-export (int) var speed = 120
-export (int) var jump_speed = -1800
-export (int) var gravity = 4000
-export (float, 0, 1.0) var friction = 0.1
-export (float, 0, 1.0) var acceleration = 0.25
+export var speed = 250 # pixels / sec
+var screensize
+var velocity
+var new_animation = "RunUp"
 
-var velocity = Vector2.ZERO
+func _ready():
+	screensize = get_viewport().size
+	position = Vector2(screensize.x / 2,
+					   screensize.y - 75)
+	
+func _process(delta):
+	velocity = Vector2.ZERO
+	velocity.x = Input.get_axis("left", "right")
+	velocity.y = Input.get_axis("up", "down")
+	if velocity.x > 0:
+		new_animation = "fishright"
+	if $AnimatedSprite.animation != new_animation:
+		$AnimatedSprite.play(new_animation)
+	if velocity.x < 0:
+		new_animation = "fishleft"
+	if $AnimatedSprite.animation != new_animation:
+		$AnimatedSprite.play(new_animation)
+		
+	velocity = velocity.normalized() * speed
+	position += velocity * delta
 
-func get_input():
-	var dir = 0
-	if Input.is_action_pressed("walk_right"):
-		dir += 1
-	if Input.is_action_pressed("walk_left"):
-		dir -= 1
-	if dir != 0:
-		velocity.x = lerp(velocity.x, dir * speed, acceleration)
-	else:
-		velocity.x = lerp(velocity.x, 0, friction)
 
-func _physics_process(delta):
-	get_input()
-	velocity.y += gravity * delta
-	velocity = move_and_slide(velocity, Vector2.UP)
-	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
-			velocity.y = jump_speed
-			
+func _on_Player_area_entered(area):
+	hide() # hides the player
+	get_tree().reload_current_scene()
+#	get_tree().reload_current_scene() # restarts
+#	get_tree().quit() # close the progame

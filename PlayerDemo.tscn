@@ -1,23 +1,56 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Squids/newpurple.png" type="Texture" id=1]
+[ext_resource path="res://Squids/RedFish2.png" type="Texture" id=1]
 [ext_resource path="res://PlayerDemo.gd" type="Script" id=2]
+[ext_resource path="res://Squids/RedFish3.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 25.02
 
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 1296, 1122 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 1296, 1125 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "fishleft",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "fishright",
+"speed": 5.0
+} ]
+
 [node name="PlayerDemo" type="KinematicBody2D"]
-position = Vector2( 307, 110 )
+position = Vector2( 322, 110 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 8, 0 )
+scale = Vector2( 0.0640432, 0.0614973 )
+frames = SubResource( 4 )
+animation = "fishleft"
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
