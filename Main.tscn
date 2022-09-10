@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://PlayerDemo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://platform.tscn" type="PackedScene" id=2]
@@ -8,35 +8,21 @@
 [ext_resource path="res://Main.gd" type="Script" id=6]
 [ext_resource path="res://platform4.tscn" type="PackedScene" id=7]
 [ext_resource path="res://fishtank.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sea-background-video-conferencing_23-2148609396.jpg" type="Texture" id=9]
 
 [node name="Level1" type="Node2D"]
 position = Vector2( 10, -4 )
 script = ExtResource( 6 )
 
 [node name="background" type="Sprite" parent="."]
-position = Vector2( 487, 251 )
-scale = Vector2( 1.0664, 1.50125 )
+position = Vector2( 2689, 1716 )
+scale = Vector2( 3.47903, 3.91896 )
 texture = ExtResource( 3 )
 
-[node name="Sky1" type="Sprite" parent="background"]
-position = Vector2( 1909.23, -2.66445 )
-texture = ExtResource( 3 )
-
-[node name="Sky2" type="Sprite" parent="background"]
-position = Vector2( -0.000244141, 1196.34 )
-texture = ExtResource( 3 )
-
-[node name="Sky3" type="Sprite" parent="background"]
-position = Vector2( 1919.53, 1184.35 )
-texture = ExtResource( 3 )
-
-[node name="Sky4" type="Sprite" parent="background"]
-position = Vector2( 3830.63, -4.57764e-05 )
-texture = ExtResource( 3 )
-
-[node name="Sky5" type="Sprite" parent="background"]
-position = Vector2( -1910.17, -22.6478 )
-texture = ExtResource( 3 )
+[node name="Sprite" type="Sprite" parent="background"]
+position = Vector2( 166.101, 77.412 )
+scale = Vector2( 1.78548, 1.71206 )
+texture = ExtResource( 9 )
 
 [node name="platform" parent="." instance=ExtResource( 2 )]
 position = Vector2( 261, 402 )
@@ -51,7 +37,7 @@ position = Vector2( 766, 507 )
 position = Vector2( 1557, 651 )
 
 [node name="platform5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1929, 838 )
+position = Vector2( 1928, 832 )
 scale = Vector2( 4.288, 0.7995 )
 
 [node name="Timer" type="Timer" parent="."]
